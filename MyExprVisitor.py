@@ -2,6 +2,10 @@ from ExprParser import ExprParser
 from ExprVisitor import ExprVisitor
  
 class MyExprVisitor(ExprVisitor):
+
+    #rent_cost = 0.0
+    #utilities_cost = 0.0
+    #grocery_cost = 0.0
     def __init__(self):
         super(MyExprVisitor, self).__init__()
         self.stack = []  # Stack to evaluate the expression
@@ -12,25 +16,20 @@ class MyExprVisitor(ExprVisitor):
  
     # Visit a parse tree produced by ExprParser#infixExpr.
     def visitInfixExpr(self, ctx:ExprParser.InfixExprContext):
-        self.visit(ctx.left)  # Evaluate the left  expression and push to stack
-        self.visit(ctx.right) # Evaluate the right expression and push to stack
+        self.visit(ctx.number)  # Evaluate expression and push to stack
  
-        b = self.stack.pop()  # Why is ‘b’ the first popped item?
         a = self.stack.pop()
         c = None
- 
-        if ctx.OP_ADD():
-            c = a + b
-        elif ctx.OP_SUB():
-            c = a - b
-        elif ctx.OP_MUL():
-            c = a * b
-        elif ctx.OP_DIV():
-            c = a / b
-        elif ctx.OP_POW():
-            c = a **  b
+
+        if ctx.CAT_GROCERY:  
+            if ctx.OP_ADD():
+                c = 0 + a
+            elif ctx.OP_SUB():
+                c = 0 - a
+
 
         self.stack.append(c)
+        print(f"grocery: {c}")
         return c
  
     # Visit a parse tree produced by ExprParser#numberExpr.

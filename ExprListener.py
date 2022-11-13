@@ -17,30 +17,21 @@ class ExprListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by ExprParser#infixExpr.
-    def enterInfixExpr(self, ctx:ExprParser.InfixExprContext):
+    # Enter a parse tree produced by ExprParser#expr.
+    def enterExpr(self, ctx:ExprParser.ExprContext):
         pass
 
-    # Exit a parse tree produced by ExprParser#infixExpr.
-    def exitInfixExpr(self, ctx:ExprParser.InfixExprContext):
-        pass
-
-
-    # Enter a parse tree produced by ExprParser#numberExpr.
-    def enterNumberExpr(self, ctx:ExprParser.NumberExprContext):
-        pass
-
-    # Exit a parse tree produced by ExprParser#numberExpr.
-    def exitNumberExpr(self, ctx:ExprParser.NumberExprContext):
+    # Exit a parse tree produced by ExprParser#expr.
+    def exitExpr(self, ctx:ExprParser.ExprContext):
         pass
 
 
-    # Enter a parse tree produced by ExprParser#parensExpr.
-    def enterParensExpr(self, ctx:ExprParser.ParensExprContext):
+    # Enter a parse tree produced by ExprParser#command.
+    def enterCommand(self, ctx:ExprParser.CommandContext):
         pass
 
-    # Exit a parse tree produced by ExprParser#parensExpr.
-    def exitParensExpr(self, ctx:ExprParser.ParensExprContext):
+    # Exit a parse tree produced by ExprParser#command.
+    def exitCommand(self, ctx:ExprParser.CommandContext):
         pass
 
 

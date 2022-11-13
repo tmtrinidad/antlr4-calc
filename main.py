@@ -6,7 +6,7 @@ from MyExprVisitor import MyExprVisitor
  
  
 def main(argv):
-    calculation = input("Enter your expression: ")
+    calculation = input("Enter your operation, cost, category: ")
 
     calc = InputStream(calculation)
     lexer = ExprLexer(calc)
@@ -16,7 +16,7 @@ def main(argv):
  
     res = MyExprVisitor().visitProg(tree)  # Evaluate the expression
  
-    print(calculation, '=', res)
+    print(calculation, '= \n', res)
  
  
 if __name__ == '__main__':
