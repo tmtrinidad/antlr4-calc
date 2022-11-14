@@ -3,8 +3,9 @@ grammar Expr;
 prog: expr EOF;
 
 expr: left=expr right=expr                #trigExpr
-    | left=expr op=('+'|'-') right=expr   #infixExpr
+    | left=expr op='^' right=expr         #infixExpr
     | left=expr op=('*'|'/') right=expr   #infixExpr
+    | left=expr op=('+'|'-') right=expr   #infixExpr
     | NUM                                 #numberExpr
     | STR                                 #strExpr
     | '(' expr ')'                        #parensExpr
