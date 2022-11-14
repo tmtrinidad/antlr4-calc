@@ -60,6 +60,12 @@ class MyExprVisitor(ExprVisitor):
     def visitStrExpr(self, ctx:ExprParser.StrExprContext):
         c = str(ctx.STR())  # Found a string, just insert to stack
         self.stack.append(c)
+        if c == 'history':
+            return MyExprVisitor.history
+        elif c == 'clear':
+            # clear the list
+            c = "Calculations have been cleared."
+
         return c
 
     def visitTrigExpr(self, ctx:ExprParser.StrExprContext):
