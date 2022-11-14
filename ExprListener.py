@@ -17,21 +17,48 @@ class ExprListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by ExprParser#expr.
-    def enterExpr(self, ctx:ExprParser.ExprContext):
+    # Enter a parse tree produced by ExprParser#strExpr.
+    def enterStrExpr(self, ctx:ExprParser.StrExprContext):
         pass
 
-    # Exit a parse tree produced by ExprParser#expr.
-    def exitExpr(self, ctx:ExprParser.ExprContext):
+    # Exit a parse tree produced by ExprParser#strExpr.
+    def exitStrExpr(self, ctx:ExprParser.StrExprContext):
         pass
 
 
-    # Enter a parse tree produced by ExprParser#command.
-    def enterCommand(self, ctx:ExprParser.CommandContext):
+    # Enter a parse tree produced by ExprParser#infixExpr.
+    def enterInfixExpr(self, ctx:ExprParser.InfixExprContext):
         pass
 
-    # Exit a parse tree produced by ExprParser#command.
-    def exitCommand(self, ctx:ExprParser.CommandContext):
+    # Exit a parse tree produced by ExprParser#infixExpr.
+    def exitInfixExpr(self, ctx:ExprParser.InfixExprContext):
+        pass
+
+
+    # Enter a parse tree produced by ExprParser#numberExpr.
+    def enterNumberExpr(self, ctx:ExprParser.NumberExprContext):
+        pass
+
+    # Exit a parse tree produced by ExprParser#numberExpr.
+    def exitNumberExpr(self, ctx:ExprParser.NumberExprContext):
+        pass
+
+
+    # Enter a parse tree produced by ExprParser#trigExpr.
+    def enterTrigExpr(self, ctx:ExprParser.TrigExprContext):
+        pass
+
+    # Exit a parse tree produced by ExprParser#trigExpr.
+    def exitTrigExpr(self, ctx:ExprParser.TrigExprContext):
+        pass
+
+
+    # Enter a parse tree produced by ExprParser#parensExpr.
+    def enterParensExpr(self, ctx:ExprParser.ParensExprContext):
+        pass
+
+    # Exit a parse tree produced by ExprParser#parensExpr.
+    def exitParensExpr(self, ctx:ExprParser.ParensExprContext):
         pass
 
 

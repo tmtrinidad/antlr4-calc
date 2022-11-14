@@ -1,18 +1,22 @@
 grammar Expr;
- 
+
 prog: expr EOF;
- 
-expr: op=('+'|'-') number=expr  cat=('rent'|'utilities'|'grocery')
-    | COST                                   
+
+expr: left=expr right=expr                #trigExpr
+    | left=expr op=('+'|'-') right=expr   #infixExpr
+    | left=expr op=('*'|'/') right=expr   #infixExpr
+    | NUM                                 #numberExpr
+    | STR                                 #strExpr
+    | '(' expr ')'                        #parensExpr
     ;
- 
+
 OP_ADD: '+';
 OP_SUB: '-';
-command: 'list';
-CAT_RENT: 'rent';
-CAT_UTIL: 'utilities';
-CAT_GROCERY: 'grocery';
+OP_MUL: '*';
+OP_DIV: '/';
+OP_POW: '^';
 
 NEWLINE : [\r\n]+ ;
-COST     : [0-9]+[.]?[0-9]* ;
+NUM     : [0-9]+.?[0-9]* ;
+STR     : [a-z]+ ;
 WS      : [ \t\r\n] -> channel(HIDDEN);

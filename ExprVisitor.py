@@ -14,13 +14,28 @@ class ExprVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by ExprParser#expr.
-    def visitExpr(self, ctx:ExprParser.ExprContext):
+    # Visit a parse tree produced by ExprParser#strExpr.
+    def visitStrExpr(self, ctx:ExprParser.StrExprContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by ExprParser#command.
-    def visitCommand(self, ctx:ExprParser.CommandContext):
+    # Visit a parse tree produced by ExprParser#infixExpr.
+    def visitInfixExpr(self, ctx:ExprParser.InfixExprContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExprParser#numberExpr.
+    def visitNumberExpr(self, ctx:ExprParser.NumberExprContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExprParser#trigExpr.
+    def visitTrigExpr(self, ctx:ExprParser.TrigExprContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExprParser#parensExpr.
+    def visitParensExpr(self, ctx:ExprParser.ParensExprContext):
         return self.visitChildren(ctx)
 
 

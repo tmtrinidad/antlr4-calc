@@ -6,17 +6,23 @@ from MyExprVisitor import MyExprVisitor
  
  
 def main(argv):
-    calculation = input("Enter your operation, cost, category: ")
+    print("Welcome to our calculator. If you would like to quit, please enter 'q'")
 
-    calc = InputStream(calculation)
-    lexer = ExprLexer(calc)
-    stream = CommonTokenStream(lexer)
-    parser = ExprParser(stream)
-    tree = parser.prog()
+    while True:
+        calculation = input("Enter your calculation: ")
+        if calculation == 'q':
+            print("Now quitting...")
+            break
+
+        calc = InputStream(calculation)
+        lexer = ExprLexer(calc)
+        stream = CommonTokenStream(lexer)
+        parser = ExprParser(stream)
+        tree = parser.prog()
  
-    res = MyExprVisitor().visitProg(tree)  # Evaluate the expression
+        res = MyExprVisitor().visitProg(tree)  # Evaluate the expression
  
-    print(calculation, '= \n', res)
+        print(calculation, '= ', res)
  
  
 if __name__ == '__main__':
