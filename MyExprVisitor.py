@@ -4,7 +4,7 @@ from ExprVisitor import ExprVisitor
 
 class MyExprVisitor(ExprVisitor):
 
-    history = ["history: "]
+    history = ["History: "]
     
     def __init__(self):
         super(MyExprVisitor, self).__init__()
@@ -34,12 +34,16 @@ class MyExprVisitor(ExprVisitor):
             MyExprVisitor.history.append(f"{a} + {b} = {c}")
         elif ctx.OP_SUB():
             c = a - b
+            MyExprVisitor.history.append(f"{a} - {b} = {c}")
         elif ctx.OP_MUL():
             c = a * b
+            MyExprVisitor.history.append(f"{a} * {b} = {c}")
         elif ctx.OP_DIV():
             c = a / b
+            MyExprVisitor.history.append(f"{a} / {b} = {c}")
         elif ctx.OP_POW():
             c = a ** b
+            MyExprVisitor.history.append(f"{a} ^{b} = {c}")
 
 
         self.stack.append(c)
@@ -86,4 +90,8 @@ class MyExprVisitor(ExprVisitor):
             c = "TRIG NOT FOUND"
 
         return c
+
+    def clearHistory():
+        MyExprVisitor.history.clear()
+        MyExprVisitor.history.append("History: ")
 
