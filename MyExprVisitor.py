@@ -5,7 +5,10 @@ from ExprVisitor import ExprVisitor
 class MyExprVisitor(ExprVisitor):
 
     history = ["History: "]
-    
+    rent = 0.0
+    grocery = 0.0
+    personal = 0.0
+    other = 0.0
     def __init__(self):
         super(MyExprVisitor, self).__init__()
         self.stack = []  # Stack to evaluate the expression
@@ -24,10 +27,8 @@ class MyExprVisitor(ExprVisitor):
         self.visit(ctx.right) # Evaluate the right expression and push to stack
         b = self.stack.pop() # b is the right side expression
         a = self.stack.pop()
-
         
         c = None
-
 
         if ctx.OP_ADD():
             c = a + b
@@ -49,7 +50,6 @@ class MyExprVisitor(ExprVisitor):
         self.stack.append(c)
 
         return c
-        #print(MyExprVisitor.history[1])
  
     # Visit a parse tree produced by ExprParser#numberExpr.
     def visitNumberExpr(self, ctx:ExprParser.NumberExprContext):
@@ -69,13 +69,16 @@ class MyExprVisitor(ExprVisitor):
         elif c == 'clear':
             # clear the list
             c = "Calculations have been cleared."
+        elif c == "a":
+            c = f"Your current totals are: \n"\
+                f"Rent/Housing {MyExprVisitor.rent}"
 
         return c
 
     def visitTrigExpr(self, ctx:ExprParser.StrExprContext):
         self.visit(ctx.left)
         self.visit(ctx.right) # Evaluate the right expression and push to stack
-        b = self.stack.pop() # b is the right side expression
+        b = self.stack.pop()  # b is the right side expression
         a = self.stack.pop()
 
         c = None
