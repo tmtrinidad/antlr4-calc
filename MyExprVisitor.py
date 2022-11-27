@@ -5,11 +5,8 @@ from ExprVisitor import ExprVisitor
 class MyExprVisitor(ExprVisitor):
 
     history = ["History: "]
-    rent = 0.0
-    grocery = 0.0
-    personal = 0.0
-    other = 0.0
     variables = {}
+    finances = {}
     def __init__(self):
         super(MyExprVisitor, self).__init__()
         self.stack = []  # Stack to evaluate the expression
@@ -115,13 +112,23 @@ class MyExprVisitor(ExprVisitor):
         self.visit(ctx.left)
         self.visit(ctx.right)
         b = self.stack.pop() # b is the number value
-        a = self.stack.pop()
-        c = 0
+        a = self.stack.pop() # a is the category
+
+        if not MyExprVisitor.financeExists(a):
+            MyExprVisitor.addFinance(a, b)
+            s = MyExprVisitor.loopFinanceDictionary()
+            return s
 
         if ctx.FINANCE_ADD():
-            return 2
+            b = MyExprVisitor.finances.get(a) + b
+            MyExprVisitor.finances.update({a: b})
+            s = MyExprVisitor.loopFinanceDictionary()
+            return s
         elif ctx.FINANCE_SUB():
-            return 3
+            b = MyExprVisitor.finances.get(a) - b
+            MyExprVisitor.finances.update({a: b})
+            s = MyExprVisitor.loopFinanceDictionary()
+            return s
 
     def visitFinanceCheckExpr(self, ctx:ExprParser.FinancecheckExprContext):
         self.visit(ctx.left)
@@ -139,11 +146,35 @@ class MyExprVisitor(ExprVisitor):
             return False
         return True
 
+    def loopFinanceDictionary():
+        statement = "\nBUDGET:  \n"
+        
+        for x,y in MyExprVisitor.finances.items():
+            statement += (f"   {x}: ${y}\n")
+            
+        return statement
+
     def addVariable(var, value):
         """
-        Add or changes the variable in the dictionary 
+        Add variable to the dictionary
         """
         MyExprVisitor.variables[var] = value
+
+    def addFinance(var, value):
+        """
+        Add variable to the dictionary
+        """
+        MyExprVisitor.finances[var] = value
+
+    def financeExists(var):
+        """
+        Return True if variable exists in the dictionary
+        Returns False if it does not
+        """
+        x = MyExprVisitor.finances.get(var)
+        if x == None:
+            return False
+        return True
 
     def clear_history():
         MyExprVisitor.history.clear()
