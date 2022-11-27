@@ -46,8 +46,6 @@ def main(argv):
             print("To open the budget tracker, enter 'b'")
             print("To open the  calculator, please enter 'c'\n")
             continue
-        # elif (user_input != 'history') & (user_input != 'a'):
-            # print(user_input, '= ', res)
         else:
             print(res)
  
