@@ -69,10 +69,6 @@ class MyExprVisitor(ExprVisitor):
         elif c == 'clear':
             # clear the list
             c = "Calculations have been cleared."
-        elif c == "a":
-            c = f"Your current totals are: \n"\
-                f"Rent/Housing {MyExprVisitor.rent}"
-
         return c
 
     def visitTrigExpr(self, ctx:ExprParser.StrExprContext):

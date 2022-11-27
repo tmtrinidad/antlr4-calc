@@ -26,11 +26,14 @@ def main(argv):
             user_input = option
         elif user_input == 'b':
             print("\nWelcome to the budgeting application\n")
-            print("Please enter a letter to add to your budget: ")
-            print("   a: Rent/Housing Payments ")
-            print("   b: Grocery")
-            print("   c: Personal")
-            print("   d: Other\n")
+            print("Please enter the name of the category to add to your budget"
+                  "and the amount you would like to add: ")
+            print("   EX: Rent 50")
+            print("_________________________________________")
+            print("      Rent")
+            print("      Grocery")
+            print("      Personal")
+            print("      Other\n")
             user_input = input("Input: ")
 
         calc = InputStream(user_input)
