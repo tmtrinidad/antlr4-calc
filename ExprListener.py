@@ -26,6 +26,15 @@ class ExprListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ExprParser#eqExpr.
+    def enterEqExpr(self, ctx:ExprParser.EqExprContext):
+        pass
+
+    # Exit a parse tree produced by ExprParser#eqExpr.
+    def exitEqExpr(self, ctx:ExprParser.EqExprContext):
+        pass
+
+
     # Enter a parse tree produced by ExprParser#infixExpr.
     def enterInfixExpr(self, ctx:ExprParser.InfixExprContext):
         pass
@@ -50,6 +59,24 @@ class ExprListener(ParseTreeListener):
 
     # Exit a parse tree produced by ExprParser#trigExpr.
     def exitTrigExpr(self, ctx:ExprParser.TrigExprContext):
+        pass
+
+
+    # Enter a parse tree produced by ExprParser#financeExpr.
+    def enterFinanceExpr(self, ctx:ExprParser.FinanceExprContext):
+        pass
+
+    # Exit a parse tree produced by ExprParser#financeExpr.
+    def exitFinanceExpr(self, ctx:ExprParser.FinanceExprContext):
+        pass
+
+
+    # Enter a parse tree produced by ExprParser#financecheckExpr.
+    def enterFinancecheckExpr(self, ctx:ExprParser.FinancecheckExprContext):
+        pass
+
+    # Exit a parse tree produced by ExprParser#financecheckExpr.
+    def exitFinancecheckExpr(self, ctx:ExprParser.FinancecheckExprContext):
         pass
 
 

@@ -19,6 +19,11 @@ class ExprVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ExprParser#eqExpr.
+    def visitEqExpr(self, ctx:ExprParser.EqExprContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ExprParser#infixExpr.
     def visitInfixExpr(self, ctx:ExprParser.InfixExprContext):
         return self.visitChildren(ctx)
@@ -31,6 +36,16 @@ class ExprVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by ExprParser#trigExpr.
     def visitTrigExpr(self, ctx:ExprParser.TrigExprContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExprParser#financeExpr.
+    def visitFinanceExpr(self, ctx:ExprParser.FinanceExprContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ExprParser#financecheckExpr.
+    def visitFinancecheckExpr(self, ctx:ExprParser.FinancecheckExprContext):
         return self.visitChildren(ctx)
 
 
