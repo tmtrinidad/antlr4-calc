@@ -44,6 +44,15 @@ class ExprListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ExprParser#funcExpr.
+    def enterFuncExpr(self, ctx:ExprParser.FuncExprContext):
+        pass
+
+    # Exit a parse tree produced by ExprParser#funcExpr.
+    def exitFuncExpr(self, ctx:ExprParser.FuncExprContext):
+        pass
+
+
     # Enter a parse tree produced by ExprParser#numberExpr.
     def enterNumberExpr(self, ctx:ExprParser.NumberExprContext):
         pass

@@ -29,6 +29,11 @@ class ExprVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ExprParser#funcExpr.
+    def visitFuncExpr(self, ctx:ExprParser.FuncExprContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ExprParser#numberExpr.
     def visitNumberExpr(self, ctx:ExprParser.NumberExprContext):
         return self.visitChildren(ctx)
