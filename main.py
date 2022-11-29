@@ -8,7 +8,8 @@ from MyExprVisitor import MyExprVisitor
 def main(argv):
     print("Welcome to our budget tracker and calculator. If you would like to quit, please enter 'q'.")
     print("To open the budget tracker, enter 'b'")
-    print("To open the  calculator, please enter 'c'\n")
+    print("To open the  calculator, please enter 'c'")
+    print("To return to this menu, please enter 'z'\n")
 
     while True:
         user_input = input("Enter your command: \n")
@@ -23,6 +24,7 @@ def main(argv):
             continue
         elif user_input == 'b':
             print("\nWelcome to the budgeting application\n")
+            print("To return to the menu, please enter 'z'\n")
             print("Please enter the name of the category to add to your budget,"
                   "\nthe operation you would like to perform: ADD or SUB"
                   "\nand the amount you would like to add: ")
@@ -34,7 +36,8 @@ def main(argv):
         elif(user_input == 'z'):
             print("\nWelcome to our budget tracker and calculator. If you would like to quit, please enter 'q'.")
             print("To open the budget tracker, enter 'b'")
-            print("To open the  calculator, please enter 'c'\n")
+            print("To open the  calculator, please enter 'c'")
+            print("To return to the menu, please enter 'z'\n")
             continue
 
         calc = InputStream(user_input)
