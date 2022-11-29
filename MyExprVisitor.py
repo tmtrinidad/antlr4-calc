@@ -20,17 +20,27 @@ class MyExprVisitor(ExprVisitor):
         try:
             self.visit(ctx.left) # Evaluate the left expression and push to stack
         except:
-            return 'ERROR'
+            return 'There is an error with the expression'
             
-        self.visit(ctx.right) # Evaluate the right expression and push to stack
+        try:
+            self.visit(ctx.right) # Evaluate the right expression and push to stack
+        except:
+            return 'There is an error with the expression'
+        
         b = self.stack.pop() # b is the right side expression
         a = self.stack.pop()
         
-        if MyExprVisitor.variableExists(b):
-            b = MyExprVisitor.variables.get(b)
-
-        if MyExprVisitor.variableExists(a):
-            a = MyExprVisitor.variables.get(a)
+        if type(b) is str:
+            if MyExprVisitor.variableExists(b):
+                b = MyExprVisitor.variables.get(b)
+            else:
+                return f"The variable '{b}' has not yet been defined"
+        
+        if type(a) is str:
+            if MyExprVisitor.variableExists(a):
+                a = MyExprVisitor.variables.get(a)
+            else:
+                return f"The variable '{a}' has not yet been defined"
             
         c = None
 
@@ -57,8 +67,13 @@ class MyExprVisitor(ExprVisitor):
  
     # Visit a parse tree produced by ExprParser#numberExpr.
     def visitNumberExpr(self, ctx:ExprParser.NumberExprContext):
-        c = float(str(ctx.NUM()))  # Found a number, just insert to stack
-        self.stack.append(c)
+        try:
+            c = float(str(ctx.NUM()))  # Found a number, just insert to stack
+            self.stack.append(c)
+        except:
+            return "\nYour number contains an unidentified character.\n" \
+                   "Please make sure you have spaces between numbers and operators\n" \
+                   "    EX: 5 + 5\n"
         return c
  
     # Visit a parse tree produced by ExprParser#parensExpr.
@@ -74,14 +89,19 @@ class MyExprVisitor(ExprVisitor):
             # clear the list
             MyExprVisitor.clear_history()
             c = "Calculations have been cleared."
+        else:
+            c = "\nYou have entered a command which is not known. \n"
         return c
 
     def visitTrigExpr(self, ctx:ExprParser.StrExprContext):
         self.visit(ctx.right) # Evaluate the right expression and push to stack
         b = self.stack.pop()  # b is the right side expression
 
-        if MyExprVisitor.variableExists(b):
-            b = MyExprVisitor.variables.get(b)
+        if type(b) is str:
+            if MyExprVisitor.variableExists(b):
+                b = MyExprVisitor.variables.get(b)
+            else:
+                return f"The variable '{b}' has not yet been defined"
 
         c = None
         
@@ -94,8 +114,6 @@ class MyExprVisitor(ExprVisitor):
         elif ctx.TRIG_COS():
             c = math.cos(b)
             MyExprVisitor.history.append(f"cos {b} = {c}")
-        else:
-            c = "TRIG NOT FOUND"
 
         return c
 
