@@ -21,6 +21,10 @@ def main(argv):
             print("To view previous calculation history, enter 'history'")
             print("To clear history, enter 'clear'")
             print("To return to the menu, enter 'z'")
+            print("\nSupported operations: +, -, *, /, ^")
+            print("                        sin, tan, cos")
+            print("                        e, ln, log")
+            print("_________________________________________\n")
             continue
         elif user_input == 'b':
             print("\nWelcome to the budgeting application\n")
